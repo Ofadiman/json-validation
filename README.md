@@ -81,3 +81,8 @@ I consider the following factors when validating a set field:
 
 - There is a change that I will have an endpoint that allows request body to be sent in one of 2 or more declared formats.
 - Tree validation is a special case that requires the ability to recursively validate the children of a selected node.
+
+# Resources
+
+- [A library that provides methods for pagination, sorting, and filtering in the API.](https://www.npmjs.com/package/nestjs-paginate)
+- [Official OpenAPI specification.](https://swagger.io/specification/)
