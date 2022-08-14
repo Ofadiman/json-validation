@@ -10,9 +10,10 @@
 # Include files
 !.gitignore
 !.prettierrc.js
-!readme.md
+!jest.setup.ts
 !nest-cli.json
 !package.json
+!readme.md
 !tsconfig.build.json
 !tsconfig.json
 !yarn.lock
