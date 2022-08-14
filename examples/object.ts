@@ -8,26 +8,86 @@ export const validObjectExamples = [
   {
     value: {
       foo: 'foo',
-      bar: 1,
     },
   },
 ]
 
 export const invalidObjectExamples = [
+  // Missing required key.
   {
-    value: 'not object',
+    value: {},
+  },
+  // Too many keys.
+  {
+    value: {
+      foo: 'foo',
+      bar: 'bar',
+    },
+  },
+  {
+    value: 'string',
+  },
+  {
+    value: null,
+  },
+  {
+    value: undefined,
+  },
+  {
+    value: [],
+  },
+  {
+    value: true,
+  },
+  {
+    value: {
+      foo: null,
+    },
+  },
+  {
+    value: {
+      foo: undefined,
+    },
+  },
+  {
+    value: {
+      foo: {},
+    },
+  },
+  {
+    value: {
+      foo: [],
+    },
+  },
+  {
+    value: {
+      foo: true,
+    },
   },
   {
     value: {
       foo: 'foo',
     },
+    unwantedKey: 'unwantedKey',
   },
   {
     value: {
-      bar: 1,
+      foo: 'foo',
+      unwantedKey: 'unwantedKey',
     },
   },
   {
-    value: {},
+    value: {
+      foo: 'foo',
+      unwantedKey: 'unwantedKey',
+    },
+    unwantedKey: 'unwantedKey',
   },
+  'string',
+  1,
+  [],
+  null,
+  true,
+  undefined,
+  {},
 ]

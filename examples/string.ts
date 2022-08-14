@@ -1,23 +1,29 @@
 /**
  * Validation rules:
  * - Value must be a valid string.
- * - Value must be at least 4 characters long.
+ * - Value must be at least 12 characters long.
  * - Value must be at most 20 characters long.
  * - Value should be a valid email address.
  */
 
 export const validStringExamples = [
   {
+    value: 'john.first@gmail.com',
+  },
+  {
     value: 'john.doe@gmail.com',
+  },
+  {
+    value: 'xd@gmail.com',
   },
 ]
 
 export const invalidStringExamples = [
   {
-    value: 'john.doe.but.this.string.is.way.too.long@gmail.com',
+    value: 'john.first2@gmail.com',
   },
   {
-    value: 'x@y.z',
+    value: 'd@gmail.com',
   },
   {
     value: 'not email',
@@ -25,4 +31,30 @@ export const invalidStringExamples = [
   {
     value: 1,
   },
+  {
+    value: null,
+  },
+  {
+    value: undefined,
+  },
+  {
+    value: {},
+  },
+  {
+    value: [],
+  },
+  {
+    value: true,
+  },
+  {
+    value: 'john.doe@gmail.com',
+    unwantedKey: 'unwantedKey',
+  },
+  'string',
+  1,
+  [],
+  null,
+  true,
+  undefined,
+  {},
 ]

@@ -14,6 +14,29 @@ export const validBooleanExamples = [
 
 export const invalidBooleanExamples = [
   {
-    value: 'not boolean',
+    value: true,
+    unwantedKey: 'unwantedKey',
   },
+  {
+    value: null,
+  },
+  {
+    value: undefined,
+  },
+  {
+    value: {},
+  },
+  {
+    value: [],
+  },
+  {
+    value: 'string',
+  },
+  'string',
+  1,
+  [],
+  null,
+  true,
+  undefined,
+  {},
 ]

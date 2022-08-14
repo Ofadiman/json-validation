@@ -19,12 +19,38 @@ export const validNumberExamples = [
 
 export const invalidNumberExamples = [
   {
+    value: 0,
+    unwantedKey: 'unwantedKey',
+  },
+  {
     value: -5.0000001,
   },
   {
     value: 5.0000001,
   },
   {
-    value: 'not number',
+    value: 'string',
   },
+  {
+    value: null,
+  },
+  {
+    value: undefined,
+  },
+  {
+    value: {},
+  },
+  {
+    value: [],
+  },
+  {
+    value: true,
+  },
+  'string',
+  1,
+  [],
+  null,
+  true,
+  undefined,
+  {},
 ]
