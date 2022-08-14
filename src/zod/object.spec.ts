@@ -6,7 +6,6 @@ const objectSchema = z
     value: z
       .object({
         foo: z.string(),
-        bar: z.number(),
       })
       .strict(),
   })

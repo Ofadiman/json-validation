@@ -4,7 +4,6 @@ import * as s from 'superstruct'
 const objectSchema = s.object({
   value: s.object({
     foo: s.string(),
-    bar: s.number(),
   }),
 })
 

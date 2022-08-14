@@ -13,7 +13,7 @@ const email = (): Struct<string, null> =>
   })
 
 const stringSchema = s.object({
-  value: s.size(email(), 4, 20),
+  value: s.size(email(), 12, 20),
 })
 
 type StringSchema = s.Infer<typeof stringSchema>

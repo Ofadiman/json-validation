@@ -3,7 +3,7 @@ import { z } from 'zod'
 
 const arraySchema = z
   .object({
-    value: z.array(z.string().min(3).max(5)),
+    value: z.array(z.string().min(3).max(5)).min(3).max(5),
   })
   .strict()
 

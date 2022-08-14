@@ -1,14 +1,10 @@
-import { IsNumber, IsObject, IsString, ValidateNested } from 'class-validator'
-import { transformAndValidate } from './_utils'
+import { IsObject, IsString, ValidateNested, validateSync } from 'class-validator'
 import { invalidObjectExamples, validObjectExamples } from '../../examples/object'
-import { Type } from 'class-transformer'
+import { plainToInstance, Type } from 'class-transformer'
 
 class ValueDto {
   @IsString()
   public foo: string
-
-  @IsNumber()
-  public bar: number
 }
 
 class ObjectDto {
@@ -21,17 +17,31 @@ class ObjectDto {
 describe('object validation', () => {
   validObjectExamples.forEach((example) => {
     it(`should pass validation for ${JSON.stringify(example)}`, () => {
-      const result = transformAndValidate(example, ObjectDto)
+      if (example !== null && typeof example === 'object') {
+        const instance = plainToInstance(ObjectDto, example)
+        const result = validateSync(instance, {
+          forbidNonWhitelisted: true,
+          forbidUnknownValues: true,
+          whitelist: true,
+        })
 
-      expect(result.length).toEqual(0)
+        expect(result.length).toEqual(0)
+      }
     })
   })
 
   invalidObjectExamples.forEach((example) => {
     it(`should fail validation for ${JSON.stringify(example)}`, () => {
-      const result = transformAndValidate(example, ObjectDto)
+      if (example !== null && typeof example === 'object') {
+        const instance = plainToInstance(ObjectDto, example)
+        const result = validateSync(instance, {
+          forbidNonWhitelisted: true,
+          forbidUnknownValues: true,
+          whitelist: true,
+        })
 
-      expect(result.length).toEqual(1)
+        expect(result.length).toBeGreaterThanOrEqual(1)
+      }
     })
   })
 })

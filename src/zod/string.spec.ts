@@ -1,9 +1,11 @@
 import { invalidStringExamples, validStringExamples } from '../../examples/string'
 import { z } from 'zod'
 
-const stringSchema = z.object({
-  value: z.string().min(4).max(20).email(),
-})
+const stringSchema = z
+  .object({
+    value: z.string().min(12).max(20).email(),
+  })
+  .strict()
 
 type StringSchema = z.infer<typeof stringSchema>
 

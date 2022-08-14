@@ -1,6 +1,6 @@
-import { IsNumber, Max, Min } from 'class-validator'
+import { IsNumber, Max, Min, validateSync } from 'class-validator'
 import { invalidNumberExamples, validNumberExamples } from '../../examples/number'
-import { transformAndValidate } from './_utils'
+import { plainToInstance } from 'class-transformer'
 
 class NumberDto {
   @IsNumber()
@@ -12,17 +12,31 @@ class NumberDto {
 describe('number validation', () => {
   validNumberExamples.forEach((example) => {
     it(`should pass validation for ${JSON.stringify(example)}`, () => {
-      const result = transformAndValidate(example, NumberDto)
+      if (example !== null && typeof example === 'object') {
+        const instance = plainToInstance(NumberDto, example)
+        const result = validateSync(instance, {
+          forbidNonWhitelisted: true,
+          forbidUnknownValues: true,
+          whitelist: true,
+        })
 
-      expect(result.length).toEqual(0)
+        expect(result.length).toEqual(0)
+      }
     })
   })
 
   invalidNumberExamples.forEach((example) => {
     it(`should fail validation for ${JSON.stringify(example)}`, () => {
-      const result = transformAndValidate(example, NumberDto)
+      if (example !== null && typeof example === 'object') {
+        const instance = plainToInstance(NumberDto, example)
+        const result = validateSync(instance, {
+          forbidNonWhitelisted: true,
+          forbidUnknownValues: true,
+          whitelist: true,
+        })
 
-      expect(result.length).toEqual(1)
+        expect(result.length).toEqual(1)
+      }
     })
   })
 })

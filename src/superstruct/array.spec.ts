@@ -2,7 +2,7 @@ import { invalidArrayExamples, validArrayExamples } from '../../examples/array'
 import * as s from 'superstruct'
 
 const arraySchema = s.object({
-  value: s.array(s.size(s.string(), 3, 5)),
+  value: s.size(s.array(s.size(s.string(), 3, 5)), 3, 5),
 })
 
 type ArraySchema = s.Infer<typeof arraySchema>
