@@ -1,9 +1,8 @@
 import { invalidStringExamples, validStringExamples } from '../../examples/string'
 import * as s from 'superstruct'
 import { isEmail } from 'class-validator'
-import { Struct } from 'superstruct'
 
-const email = (): Struct<string, null> =>
+const email = (): s.Struct<string, null> =>
   s.define('email', (value) => {
     if (s.is(value, s.string())) {
       return isEmail(value)
